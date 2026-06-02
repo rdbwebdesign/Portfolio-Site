@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact | Your Name</title>
+    
+    <!-- 1. The Anti-Flashbang Script -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -16,27 +24,23 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 40px 20px;
-            transition: background 0.3s, color 0.3s;
         }
 
-        /* ── Dark Mode Variables & Overrides ── */
-        body.dark-mode {
-            color: #e0e0e0;
-            background: #121212;
-        }
-        body.dark-mode a { color: #e0e0e0; }
-        body.dark-mode header p { color: #aaa; }
-        body.dark-mode nav a.active { color: #fff; }
-        body.dark-mode section h2 { border-bottom: 1px solid #333; color: #666; }
-        body.dark-mode label { color: #aaa; }
-        body.dark-mode input, body.dark-mode textarea {
+        /* ── Dark Mode Target via HTML root element ── */
+        html.dark-mode body { color: #e0e0e0; background: #121212; }
+        html.dark-mode a { color: #e0e0e0; }
+        html.dark-mode header p { color: #aaa; }
+        html.dark-mode nav a.active { color: #fff; }
+        html.dark-mode section h2 { border-bottom: 1px solid #333; color: #666; }
+        html.dark-mode label { color: #aaa; }
+        html.dark-mode input, html.dark-mode textarea {
             background: #1e1e1e;
             border: 1px solid #444;
             color: #fff;
         }
-        body.dark-mode button { background: #fff; color: #121212; }
-        body.dark-mode button:hover { background: #ccc; }
-        body.dark-mode footer { border-top: 1px solid #333; color: #555; }
+        html.dark-mode button { background: #fff; color: #121212; }
+        html.dark-mode button:hover { background: #ccc; }
+        html.dark-mode footer { border-top: 1px solid #333; color: #555; }
 
         a { color: #222; }
         a:hover { text-decoration: none; }
@@ -150,19 +154,19 @@
         <p>&copy; 2026 Your Name</p>
     </footer>
 
+    <!-- 2. The Button Event Listener Script -->
     <script>
         const toggle = document.getElementById('theme-toggle');
         
         if (localStorage.getItem('theme') === 'dark') {
-          document.body.classList.add('dark-mode');
           toggle.textContent = 'Light Mode';
         }
 
         toggle.addEventListener('click', (e) => {
           e.preventDefault();
-          document.body.classList.toggle('dark-mode');
+          document.documentElement.classList.toggle('dark-mode');
           
-          if (document.body.classList.contains('dark-mode')) {
+          if (document.documentElement.classList.contains('dark-mode')) {
             localStorage.setItem('theme', 'dark');
             toggle.textContent = 'Light Mode';
           } else {
