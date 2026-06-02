@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Your Name</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: Georgia, serif;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #222;
+            background: #fff;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* ── Dark Mode Variables & Overrides ── */
+        body.dark-mode {
+            color: #e0e0e0;
+            background: #121212;
+        }
+        body.dark-mode a { color: #e0e0e0; }
+        body.dark-mode header p { color: #aaa; }
+        body.dark-mode nav a.active { color: #fff; }
+        body.dark-mode section h2 { border-bottom: 1px solid #333; color: #666; }
+        body.dark-mode label { color: #aaa; }
+        body.dark-mode input, body.dark-mode textarea {
+            background: #1e1e1e;
+            border: 1px solid #444;
+            color: #fff;
+        }
+        body.dark-mode button { background: #fff; color: #121212; }
+        body.dark-mode button:hover { background: #ccc; }
+        body.dark-mode footer { border-top: 1px solid #333; color: #555; }
+
+        a { color: #222; }
+        a:hover { text-decoration: none; }
+
+        header { margin-bottom: 60px; }
+        header h1 { font-size: 2rem; font-weight: normal; margin-bottom: 4px; }
+        header p { color: #666; }
+
+        nav { margin-top: 16px; }
+        nav a { margin-right: 20px; cursor: pointer; }
+        nav a.active { text-decoration: underline; color: #000; }
+
+        section { margin-bottom: 60px; }
+        section h2 {
+            font-size: 1rem;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #999;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+        #contact p { margin-bottom: 8px; }
+
+        /* ── Simple form ── */
+        form {
+            margin-top: 24px;
+            max-width: 480px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        input, textarea {
+            display: block;
+            width: 100%;
+            font-family: Georgia, serif;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            padding: 8px 10px;
+            margin-bottom: 20px;
+            background: #fff;
+            color: #222;
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            font-family: Georgia, serif;
+            font-size: 1rem;
+            background: #222;
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            cursor: pointer;
+        }
+
+        button:hover { background: #444; }
+
+        footer {
+            margin-top: 80px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Your Name</h1>
+        <p>Student web developer — building simple, clean sites for small businesses.</p>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html" class="active">Contact</a>
+            <a id="theme-toggle">Dark Mode</a>
+        </nav>
+    </header>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Interested in working together? Fill out the form or reach out directly.</p>
+        <p>Email: <a href="mailto:rdbwebdesign1@gmail.com">rdbwebdesign1@gmail.com</a></p>
+
+        <form action="https://formspree.io/f/xeenjnvo" method="POST">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Justin Bieber" />
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="jbiebs@example.com" />
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me about your project..."></textarea>
+
+            <button type="submit">Send message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Your Name</p>
+    </footer>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        
+        if (localStorage.getItem('theme') === 'dark') {
+          document.body.classList.add('dark-mode');
+          toggle.textContent = 'Light Mode';
+        }
+
+        toggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          document.body.classList.toggle('dark-mode');
+          
+          if (document.body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+            toggle.textContent = 'Light Mode';
+          } else {
+            localStorage.setItem('theme', 'light');
+            toggle.textContent = 'Dark Mode';
+          }
+        });
+    </script>
+</body>
+</html>
