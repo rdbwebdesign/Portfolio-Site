@@ -71,6 +71,45 @@
       font-size: 0.85rem;
       color: #aaa;
     }
+    /* ── Updated Project Layout ── */
+.project {
+  margin-bottom: 48px;
+  display: flex;
+  flex-direction: column; /* Stacked by default (mobile-first) */
+  gap: 20px;
+}
+
+/* On screens wider than 600px, pull them side-by-side */
+@media (min-width: 600px) {
+  .project {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.project-content {
+  flex: 1; /* Takes up the remaining space */
+}
+
+.project-image-wrapper {
+  flex: 0 0 200px; /* Fixed width for the image container on desktop */
+  order: -1; /* Puts the image on the left. Remove this line if you want images on the right! */
+}
+
+.project-img {
+  width: 100%;
+  height: 130px; /* Gives all previews a uniform height */
+  object-fit: cover; /* Prevents stretching/distortion */
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background-color: var(--text-light); /* Fallback placeholder color */
+  transition: transform 0.3s ease;
+}
+
+/* Subtle interactive zoom effect when hovering over the project */
+.project:hover .project-img {
+  transform: scale(1.02);
+}
   </style>
 </head>
 <body>
@@ -86,27 +125,41 @@
     </nav>
   </header>
 
-  <section id="projects">
+<section id="projects">
     <h2>Projects</h2>
 
     <div class="project">
-      <h3>Example Cafe Site</h3>
-      <p>A Simple Site for an example cafe, which includes a home page, about page, and contact page.</p>
-     <a href="https://rdbwebdesign.github.io/Cafe/" target="_blank" rel="noopener noreferrer">View site →</a>
+      <div class="project-image-wrapper">
+        <img src="images/cafe-preview.jpg" alt="Screenshot of the Example Cafe Website" class="project-img" />
+      </div>
+      <div class="project-content">
+        <h3>Example Cafe Site</h3>
+        <p>A simple site for an example cafe, which includes a home page, about page, and contact page.</p>
+        <a class="project-link" href="https://rdbwebdesign.github.io/Cafe/" target="_blank" rel="noopener noreferrer">View site →</a>
+      </div>
     </div>
 
     <div class="project">
-      <h3>Example Hotel Site</h3>
-      <p>A minimalist and clean site for an example hotel, featuring a plethera of pages including a gallery, ammenities, and suites page.</p>
-      <a href="https://rdbwebdesign.github.io/Hotel/" target="_blank" rel="noopener noreferrer">View site →</a>
+      <div class="project-image-wrapper">
+        <img src="images/hotel-preview.jpg" alt="Screenshot of the Example Hotel Website" class="project-img" />
+      </div>
+      <div class="project-content">
+        <h3>Example Hotel Site</h3>
+        <p>A minimalist and clean site for an example hotel, featuring a plethora of pages including a gallery, amenities, and suites page.</p>
+        <a class="project-link" href="https://rdbwebdesign.github.io/Hotel/" target="_blank" rel="noopener noreferrer">View site →</a>
+      </div>
     </div>
 
     <div class="project">
-      <h3>Example Contracting Site</h3>
-      <p>A 3 page site for a contracting company. </p>
-      <a href="https://rdbwebdesign.github.io/Contracting/" target="_blank" rel="noopener noreferrer">View site →</a>
+      <div class="project-image-wrapper">
+        <img src="images/contracting-preview.jpg" alt="Screenshot of the Example Contracting Website" class="project-img" />
+      </div>
+      <div class="project-content">
+        <h3>Example Contracting Site</h3>
+        <p>A 3-page site for a contracting company.</p>
+        <a class="project-link" href="https://rdbwebdesign.github.io/Contracting/" target="_blank" rel="noopener noreferrer">View site →</a>
+      </div>
     </div>
-
   </section>
 
   <footer>
